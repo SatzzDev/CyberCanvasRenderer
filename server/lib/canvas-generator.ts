@@ -606,13 +606,14 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     // Add blinking cursor - move position to end of first line text
     ctx.fillRect(centerX + 120, terminalY + 30, 10, 2);
     
-    // System status indicators
+    // Hacker quotes instead of status indicators
     ctx.font = SMALL_FONT;
     // Add glow effect to make the text more visible
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, 10);
     ctx.fillStyle = COLORS.WHITE; // Make text color white for better contrast
-    ctx.fillText(`SYS.STATUS: ONLINE`, terminalX + 20, terminalY + 65);
-    ctx.fillText(`SEC.LEVEL: ALPHA`, terminalX + terminalWidth - 120, terminalY + 65);
+    ctx.textAlign = 'left'; // Set alignment to left
+    ctx.fillText(`"CODE IS POETRY"`, terminalX + 20, terminalY + 65);
+    ctx.fillText(`"HACK THE PLANET"`, terminalX + 20, terminalY + 85);
     ctx.shadowBlur = 0; // Reset the shadow
     ctx.restore();
     
@@ -885,19 +886,18 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillText('// SYSTEM OFFLINE //', centerX, terminalY + 50);
     ctx.shadowBlur = 0;
     
-    // "Error" text lines
+    // Hacker quotes instead of error info
     ctx.font = SMALL_FONT;
     // Add glow effect to make text more visible
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_PINK, 10);
     ctx.fillStyle = COLORS.WHITE; // Improve contrast with white color
-    ctx.fillText(`SIGNAL LOST...`, terminalX + 20, terminalY + 65);
-    ctx.fillText(`CODE: X-${Math.floor(Math.random() * 9000) + 1000}`, terminalX + terminalWidth - 150, terminalY + 65);
+    ctx.textAlign = 'left'; // Set alignment to left
+    ctx.fillText(`"DIGITAL REBELLION"`, terminalX + 20, terminalY + 65);
     
-    // Error code line
-    ctx.font = SMALL_FONT;
-    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_RED, 15); // Extra glow for error text
+    // Second quote with red glow
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_RED, 15);
     ctx.fillStyle = COLORS.WHITE; 
-    ctx.fillText(`ERR: DISCONNECT_FORCED`, terminalX + 160, terminalY + 85);
+    ctx.fillText(`"SYSTEM NEVER FAILS, PEOPLE DO"`, terminalX + 20, terminalY + 85);
     ctx.shadowBlur = 0; // Reset shadow effect
     ctx.restore();
     
