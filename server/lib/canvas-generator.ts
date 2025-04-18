@@ -603,18 +603,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillText('// CONNECTION ESTABLISHED //', centerX, terminalY + 50);
     ctx.shadowBlur = 0;
     
-    // Add blinking cursor - move position to end of first line text
-    ctx.fillRect(centerX + 120, terminalY + 30, 10, 2);
     
-    // Hacker quotes instead of status indicators
-    ctx.font = SMALL_FONT;
-    // Add glow effect to make the text more visible
-    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, 10);
-    ctx.fillStyle = COLORS.WHITE; // Make text color white for better contrast
-    ctx.textAlign = 'left'; // Set alignment to left
-    ctx.fillText(`"CODE IS POETRY"`, terminalX + 20, terminalY + 65);
-    ctx.fillText(`"HACK THE PLANET"`, terminalX + 20, terminalY + 85);
-    ctx.shadowBlur = 0; // Reset the shadow
     ctx.restore();
     
     // Add more decorative elements
@@ -886,20 +875,7 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillText('// SYSTEM OFFLINE //', centerX, terminalY + 50);
     ctx.shadowBlur = 0;
     
-    // Hacker quotes instead of error info
-    ctx.font = SMALL_FONT;
-    // Add glow effect to make text more visible
-    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_PINK, 10);
-    ctx.fillStyle = COLORS.WHITE; // Improve contrast with white color
-    ctx.textAlign = 'left'; // Set alignment to left
-    ctx.fillText(`"DIGITAL REBELLION"`, terminalX + 20, terminalY + 65);
-    
-    // Second quote with red glow
-    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_RED, 15);
-    ctx.fillStyle = COLORS.WHITE; 
-    ctx.fillText(`"SYSTEM NEVER FAILS, PEOPLE DO"`, terminalX + 20, terminalY + 85);
-    ctx.shadowBlur = 0; // Reset shadow effect
-    ctx.restore();
+  
     
     // Add more decorative "disconnected" elements
     for (let i = 0; i < 12; i++) {
