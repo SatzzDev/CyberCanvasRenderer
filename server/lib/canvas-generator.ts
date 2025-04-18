@@ -10,8 +10,7 @@ console.log('Using system fonts for now');
 const ORBITRON_FONT = 'bold 60px Arial';
 const RAJDHANI_FONT = 'bold 40px Arial';
 const TERMINAL_FONT = 'bold 22px monospace';
-const SMALL_FONT = 'bold 14px monospace';
-const STATUS_FONT = 'bold 14px monospace';
+const SMALL_FONT = 'bold 18px monospace'; // Increased from 14px to 18px for better visibility
 
 // Color constants - Enhanced cyberpunk theme
 const COLORS = {
@@ -345,8 +344,9 @@ export const profile = async (username: string, avatarBuffer: Buffer, isPremium 
   
   // Button text
   ctx.font = 'bold 30px Arial';
-  ctx.fillStyle = isPremium || isOwner ? COLORS.CYBER_GOLD : COLORS.CYBER_BLUE;
-  createGlow(ctx, 0, 0, 0, 0, isPremium || isOwner ? COLORS.CYBER_GOLD : COLORS.CYBER_BLUE, 10);
+  // Use white text with colored glow for better visibility
+  ctx.fillStyle = COLORS.WHITE;
+  createGlow(ctx, 0, 0, 0, 0, isPremium || isOwner ? COLORS.CYBER_GOLD : COLORS.CYBER_BLUE, 15);
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillText(isOwner ? 'OWNER' : isPremium ? 'PREMIUM' : 'FREE', buttonX + buttonWidth / 2, buttonY + buttonHeight / 2);
@@ -356,10 +356,12 @@ export const profile = async (username: string, avatarBuffer: Buffer, isPremium 
   drawCyberGrid(ctx, buttonX, buttonY, buttonWidth, buttonHeight, buttonColor, 0.3);
   
   // Creator signature
-  ctx.globalAlpha = 0.5;
+  ctx.globalAlpha = 0.7; // Slightly more visible
   ctx.font = SMALL_FONT;
-  ctx.fillStyle = COLORS.GRAY;
+  createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_BLUE, 5); // Subtle glow for signature
+  ctx.fillStyle = COLORS.WHITE; // White text for better visibility
   ctx.fillText('Created By SatzzDev // CyberEdition', 1170, 465);
+  ctx.shadowBlur = 0; // Reset shadow
   ctx.globalAlpha = 1;
   
   return canvas.toBuffer('image/png');
@@ -600,8 +602,12 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     
     // System status indicators
     ctx.font = SMALL_FONT;
+    // Add glow effect to make the text more visible
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, 10);
+    ctx.fillStyle = COLORS.WHITE; // Make text color white for better contrast
     ctx.fillText(`SYS.STATUS: ONLINE`, terminalX + 20, terminalY + 65);
     ctx.fillText(`SEC.LEVEL: ALPHA`, terminalX + terminalWidth - 120, terminalY + 65);
+    ctx.shadowBlur = 0; // Reset the shadow
     ctx.restore();
     
     // Add more decorative elements
@@ -869,14 +875,18 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     
     // "Error" text lines
     ctx.font = SMALL_FONT;
-    ctx.fillStyle = COLORS.CYBER_PINK;
+    // Add glow effect to make text more visible
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_PINK, 10);
+    ctx.fillStyle = COLORS.WHITE; // Improve contrast with white color
     ctx.fillText(`SIGNAL LOST...`, terminalX + 20, terminalY + 65);
     ctx.fillText(`CODE: X-${Math.floor(Math.random() * 9000) + 1000}`, terminalX + terminalWidth - 150, terminalY + 65);
     
     // Error code line
     ctx.font = SMALL_FONT;
-    ctx.fillStyle = COLORS.CYBER_RED;
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_RED, 15); // Extra glow for error text
+    ctx.fillStyle = COLORS.WHITE; 
     ctx.fillText(`ERR: DISCONNECT_FORCED`, terminalX + 160, terminalY + 85);
+    ctx.shadowBlur = 0; // Reset shadow effect
     ctx.restore();
     
     // Add more decorative "disconnected" elements
