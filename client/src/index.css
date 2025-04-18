@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 180 100% 50%; /* Cyber Blue */
+    --primary-foreground: 210 40% 98%;
+    
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    --radius: 0.5rem;
+    
+    /* Custom cyber theme colors */
+    --cyber-blue: 180 100% 50%;
+    --cyber-green: 104 100% 54.1%;
+    --cyber-pink: 303 100% 50%;
+    --cyber-purple: 276 100% 57.6%;
+    --cyber-gold: 45 100% 51.6%;
+    --cyber-dark: 240 41.2% 8.6%;
+    --cyber-darker: 240 43.2% 6.3%;
+    --cyber-black: 240 45.5% 3.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply font-sans bg-cyber-dark text-white;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(57, 255, 20, 0.08) 0%, transparent 20%),
+      linear-gradient(rgba(15, 15, 26, 0.9), rgba(15, 15, 26, 0.9)),
+      repeating-linear-gradient(0deg, rgba(57, 255, 20, 0.1) 0px, rgba(57, 255, 20, 0.1) 1px, transparent 1px, transparent 30px),
+      repeating-linear-gradient(90deg, rgba(0, 255, 255, 0.1) 0px, rgba(0, 255, 255, 0.1) 1px, transparent 1px, transparent 30px);
+  }
+  
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  
+  /* Cyber theme utilities */
+  .cyber-grid {
+    background-image: linear-gradient(rgba(57, 255, 20, 0.15) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(57, 255, 20, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .circuit-bg {
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+      radial-gradient(rgba(57, 255, 20, 0.1) 2px, transparent 2px);
+    background-size: 40px 40px, 40px 40px, 80px 80px;
+    background-position: 0 0, 0 0, 20px 20px;
+  }
+  
+  .scan-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, transparent, rgba(57, 255, 20, 0.5), rgba(0, 255, 255, 0.8), rgba(57, 255, 20, 0.5), transparent);
+    z-index: 2;
+    animation: scan 3s linear infinite;
+    opacity: 0.7;
+  }
+  
+  .hex-avatar {
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  }
+  
+  .hex-border {
+    position: relative;
+  }
+  
+  .hex-border::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    background: linear-gradient(45deg, #00FFFF, #39FF14, #FF00E6, #B026FF);
+    clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+    z-index: -1;
+    animation: borderRotate 6s linear infinite;
+  }
+  
+  .premium-glow {
+    filter: drop-shadow(0 0 10px #FFC107);
+    animation: premium-pulse 3s ease-in-out infinite alternate;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
+  }
+  
+  @keyframes premium-pulse {
+    0% { filter: drop-shadow(0 0 5px #FFC107); }
+    100% { filter: drop-shadow(0 0 15px #FFC107); }
+  }
+  
+  @keyframes borderRotate {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+}
+
+/* Color additions to tailwind */
+@layer utilities {
+  .bg-cyber-dark {
+    background-color: hsl(240, 41.2%, 8.6%);
+  }
+  
+  .bg-cyber-darker {
+    background-color: hsl(240, 43.2%, 6.3%);
+  }
+  
+  .bg-cyber-black {
+    background-color: hsl(240, 45.5%, 3.9%);
+  }
+  
+  .text-cyber-blue {
+    color: #00FFFF;
+  }
+  
+  .text-cyber-green {
+    color: #39FF14;
+  }
+  
+  .text-cyber-pink {
+    color: #FF00E6;
+  }
+  
+  .text-cyber-gold {
+    color: #FFC107;
+  }
+  
+  .border-cyber-blue {
+    border-color: #00FFFF;
+  }
+  
+  .border-cyber-green {
+    border-color: #39FF14;
+  }
+  
+  .border-cyber-pink {
+    border-color: #FF00E6;
+  }
+  
+  .border-cyber-gold {
+    border-color: #FFC107;
+  }
+}
