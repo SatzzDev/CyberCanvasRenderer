@@ -11,6 +11,7 @@ const ORBITRON_FONT = 'bold 60px Arial';
 const RAJDHANI_FONT = 'bold 40px Arial';
 const TERMINAL_FONT = 'bold 22px monospace';
 const SMALL_FONT = 'bold 14px monospace';
+const STATUS_FONT = 'bold 14px monospace';
 
 // Color constants - Enhanced cyberpunk theme
 const COLORS = {
@@ -356,7 +357,7 @@ export const profile = async (username: string, avatarBuffer: Buffer, isPremium 
   
   // Creator signature
   ctx.globalAlpha = 0.5;
-  ctx.font = 'bold 16px Rajdhani';
+  ctx.font = SMALL_FONT;
   ctx.fillStyle = COLORS.GRAY;
   ctx.fillText('Created By SatzzDev // CyberEdition', 1170, 465);
   ctx.globalAlpha = 1;
@@ -598,7 +599,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillRect(centerX + 240, terminalY + 30, 10, 2);
     
     // System status indicators
-    ctx.font = STATUS_FONT;
+    ctx.font = SMALL_FONT;
     ctx.fillText(`SYS.STATUS: ONLINE`, terminalX + 20, terminalY + 65);
     ctx.fillText(`SEC.LEVEL: ALPHA`, terminalX + terminalWidth - 120, terminalY + 65);
     ctx.restore();
@@ -867,13 +868,13 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillText('// CONNECTION TERMINATED // SYSTEM OFFLINE', centerX, terminalY + 35);
     
     // "Error" text lines
-    ctx.font = STATUS_FONT;
+    ctx.font = SMALL_FONT;
     ctx.fillStyle = COLORS.CYBER_PINK;
     ctx.fillText(`SIGNAL LOST...`, terminalX + 20, terminalY + 65);
     ctx.fillText(`CODE: X-${Math.floor(Math.random() * 9000) + 1000}`, terminalX + terminalWidth - 150, terminalY + 65);
     
     // Error code line
-    ctx.font = 'bold 14px Rajdhani';
+    ctx.font = SMALL_FONT;
     ctx.fillStyle = COLORS.CYBER_RED;
     ctx.fillText(`ERR: DISCONNECT_FORCED`, terminalX + 160, terminalY + 85);
     ctx.restore();
