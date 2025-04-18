@@ -360,7 +360,7 @@ export const profile = async (username: string, avatarBuffer: Buffer, isPremium 
   ctx.font = SMALL_FONT;
   createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_BLUE, 5); // Subtle glow for signature
   ctx.fillStyle = COLORS.WHITE; // White text for better visibility
-  ctx.fillText('Created By SatzzDev // CyberEdition', 1170, 465);
+  ctx.fillText('Created By SatzzDev', 1170, 465);
   ctx.shadowBlur = 0; // Reset shadow
   ctx.globalAlpha = 1;
   
@@ -594,11 +594,17 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     
     // Terminal text
     ctx.font = TERMINAL_FONT;
-    ctx.fillStyle = COLORS.CYBER_GREEN;
-    ctx.fillText('// ACCESS GRANTED // CONNECTION ESTABLISHED', centerX, terminalY + 35);
+    // Add stronger glow effect to terminal text
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, 20);
+    ctx.fillStyle = COLORS.WHITE; // Change to white for better visibility
+    // Center text properly to stay within the terminal box
+    ctx.textAlign = 'center';
+    ctx.fillText('// ACCESS GRANTED //', centerX, terminalY + 30);
+    ctx.fillText('// CONNECTION ESTABLISHED //', centerX, terminalY + 50);
+    ctx.shadowBlur = 0;
     
-    // Add blinking cursor
-    ctx.fillRect(centerX + 240, terminalY + 30, 10, 2);
+    // Add blinking cursor - move position to end of first line text
+    ctx.fillRect(centerX + 120, terminalY + 30, 10, 2);
     
     // System status indicators
     ctx.font = SMALL_FONT;
@@ -870,8 +876,14 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     
     // Terminal disconnection text with glitch effect
     ctx.font = TERMINAL_FONT;
-    ctx.fillStyle = COLORS.CYBER_RED;
-    ctx.fillText('// CONNECTION TERMINATED // SYSTEM OFFLINE', centerX, terminalY + 35);
+    // Add stronger glow effect for error text
+    createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_RED, 25);
+    ctx.fillStyle = COLORS.WHITE; // Change to white for better visibility
+    // Center text properly and split into two lines to stay within the terminal box
+    ctx.textAlign = 'center';
+    ctx.fillText('// CONNECTION TERMINATED //', centerX, terminalY + 30);
+    ctx.fillText('// SYSTEM OFFLINE //', centerX, terminalY + 50);
+    ctx.shadowBlur = 0;
     
     // "Error" text lines
     ctx.font = SMALL_FONT;
