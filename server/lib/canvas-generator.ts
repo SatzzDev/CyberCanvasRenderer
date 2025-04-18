@@ -481,7 +481,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     ctx.restore();
     
     // Username text with enhanced glow effect
-    ctx.font = `bold 60px Orbitron`;
+    ctx.font = ORBITRON_FONT;
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, extraGlow ? 40 : 25);
     ctx.fillStyle = COLORS.WHITE;
     ctx.textAlign = 'center';
@@ -525,7 +525,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     welcomeGradient.addColorStop(0, COLORS.CYBER_GREEN);
     welcomeGradient.addColorStop(1, COLORS.CYBER_BLUE);
     
-    ctx.font = 'bold 40px Rajdhani';
+    ctx.font = RAJDHANI_FONT;
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_GREEN, 15);
     ctx.fillStyle = welcomeGradient;
     ctx.fillText(`WELCOME TO ${serverName.toUpperCase()}`, centerX, centerY + 300);
@@ -590,7 +590,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     ctx.stroke();
     
     // Terminal text
-    ctx.font = 'bold 22px Orbitron';
+    ctx.font = TERMINAL_FONT;
     ctx.fillStyle = COLORS.CYBER_GREEN;
     ctx.fillText('// ACCESS GRANTED // CONNECTION ESTABLISHED', centerX, terminalY + 35);
     
@@ -598,7 +598,7 @@ export const Welcome = async (username: string, avatarBuffer: Buffer, serverName
     ctx.fillRect(centerX + 240, terminalY + 30, 10, 2);
     
     // System status indicators
-    ctx.font = 'bold 14px Rajdhani';
+    ctx.font = STATUS_FONT;
     ctx.fillText(`SYS.STATUS: ONLINE`, terminalX + 20, terminalY + 65);
     ctx.fillText(`SEC.LEVEL: ALPHA`, terminalX + terminalWidth - 120, terminalY + 65);
     ctx.restore();
@@ -737,7 +737,7 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     ctx.restore();
     
     // Username text with glitched effect
-    ctx.font = `bold 60px Orbitron`;
+    ctx.font = ORBITRON_FONT;
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_PINK, extraGlow ? 35 : 20);
     
     // Draw username with slight offset for glitch effect
@@ -795,7 +795,7 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     byeGradient.addColorStop(0, COLORS.CYBER_PINK);
     byeGradient.addColorStop(1, COLORS.CYBER_PURPLE);
     
-    ctx.font = 'bold 40px Rajdhani';
+    ctx.font = RAJDHANI_FONT;
     createGlow(ctx, 0, 0, 0, 0, COLORS.CYBER_PINK, 15);
     ctx.fillStyle = byeGradient;
     ctx.fillText(`GOODBYE FROM ${serverName.toUpperCase()}`, centerX, centerY + 300);
@@ -862,12 +862,12 @@ export const Goodbye = async (username: string, avatarBuffer: Buffer, serverName
     ctx.stroke();
     
     // Terminal disconnection text with glitch effect
-    ctx.font = 'bold 22px Orbitron';
+    ctx.font = TERMINAL_FONT;
     ctx.fillStyle = COLORS.CYBER_RED;
     ctx.fillText('// CONNECTION TERMINATED // SYSTEM OFFLINE', centerX, terminalY + 35);
     
     // "Error" text lines
-    ctx.font = 'bold 14px Rajdhani';
+    ctx.font = STATUS_FONT;
     ctx.fillStyle = COLORS.CYBER_PINK;
     ctx.fillText(`SIGNAL LOST...`, terminalX + 20, terminalY + 65);
     ctx.fillText(`CODE: X-${Math.floor(Math.random() * 9000) + 1000}`, terminalX + terminalWidth - 150, terminalY + 65);
